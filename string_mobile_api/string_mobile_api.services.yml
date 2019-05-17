@@ -1,0 +1,35 @@
+services:
+  string_mobile_api.type_manager:
+    class: '\Drupal\string_mobile_api\Classes\stringMobileApiTypeManager'
+    tags:
+      - { name: service_collector, tag: string_mobile_api.type_manager, call: addItemType }
+
+  string_mobile_api.link:
+    class: '\Drupal\string_mobile_api\UIItemTypes\stringItemTypeLink'
+    tags:
+      - { name: string_mobile_api.type_manager }
+
+  string_mobile_api.list:
+    class: '\Drupal\string_mobile_api\UIItemTypes\stringItemTypeList'
+    tags:
+      - { name: string_mobile_api.type_manager }
+
+  string_mobile_api.node:
+    class: '\Drupal\string_mobile_api\UIItemTypes\stringItemTypeNode'
+    tags:
+      - { name: string_mobile_api.type_manager }
+
+  string_mobile_api.system:
+    class: '\Drupal\string_mobile_api\UIItemTypes\stringItemTypeSystem'
+    tags:
+      - { name: string_mobile_api.type_manager }
+
+  string_mobile_api.html:
+    class: '\Drupal\string_mobile_api\UIItemTypes\stringItemTypeHTML'
+    tags:
+      - { name: string_mobile_api.type_manager }
+
+  string_mobile_api.youtube:
+    class: '\Drupal\string_mobile_api\UIItemTypes\stringItemTypeYoutube'
+    tags:
+      - { name: string_mobile_api.type_manager }

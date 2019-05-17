@@ -1,0 +1,11 @@
+entity.string_mobile_api_item.add_form:
+  route_name: 'entity.string_mobile_api_item.add_form'
+  title: 'Add UI Item'
+  appears_on:
+    - entity.string_mobile_api_item.collection
+
+string_mobile_api.variables.add:
+  route_name: 'string_mobile_api.variables.add'
+  title: 'Add UI Variable'
+  appears_on:
+    - string_mobile_api.variables.collection

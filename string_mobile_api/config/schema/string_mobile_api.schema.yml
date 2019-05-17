@@ -1,0 +1,94 @@
+string_mobile_api.string_mobile_api_item.*:
+  type: config_entity
+  label: 'UI-Item config'
+  mapping:
+    id:
+      type: string
+      label: 'ID'
+    label:
+      type: label
+      label: 'Label'
+    subtitle:
+      type: string
+      label: 'Subtitle'
+    order:
+      type: integer
+      label: 'Order'
+    parent:
+      type: string
+      label: 'Parent'
+    type:
+      type: string
+      label: 'Type'
+    content:
+      type: string
+      label: 'Content'
+    image:
+      type: string
+      label: 'Image'
+    uuid:
+      type: string
+    enabled:
+      type: boolean
+
+string_mobile_api.settings:
+  type: config_object
+  label: 'string Mobile API - Settings'
+  mapping:
+    view_modes:
+      type: sequence
+      label: 'View modes'
+      sequence:
+        type: mapping
+        mapping: 
+          view_mode:
+            type: string
+            label: View Mode
+          changed:
+            type: integer
+            label: Configuration changed timestamp
+
+string_mobile_api.filters:
+  type: config_object
+  label: 'string Mobile API - Filters'
+  mapping:
+    entities:
+      type: sequence
+      label: 'Entity Types'
+      sequence:
+        type: mapping
+        mapping:
+          parameters:
+            type: sequence
+            label: 'Restriction Params'
+            sequence:
+              type: mapping
+              mapping:
+                values:
+                  type: sequence
+                  label: 'Restricted Values'
+                  sequence:
+                    type: mapping
+                    mapping:
+                      value:
+                        type: string
+                        label: Event Type Name
+
+string_mobile_api.variables:
+  type: config_entity
+  label: 'UI variables'
+  mapping:
+    timestamp:
+      type: integer
+      label: timestamp
+    variables:
+      type: sequence
+      sequence:
+        type: mapping
+        mapping:
+          name:
+            type: string
+          value:
+            type: string
+          description:
+            type: string

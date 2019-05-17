@@ -1,0 +1,19 @@
+entity.string_mobile_api_item.collection:
+  route_name: entity.string_mobile_api_item.collection
+  base_route: entity.string_mobile_api_item.collection
+  title: UI Editor
+
+string_mobile_api.variables.collection:
+  route_name: string_mobile_api.variables.collection
+  base_route: entity.string_mobile_api_item.collection
+  title: 'Variables'
+
+string_mobile_api.settings:
+  route_name: string_mobile_api.settings
+  base_route: entity.string_mobile_api_item.collection
+  title: 'Settings'
+
+string_mobile_api.filters_tab:
+  route_name: string_mobile_api.filters
+  base_route: entity.string_mobile_api_item.collection
+  title: 'Filters'

@@ -1,0 +1,80 @@
+<?php
+use Drupal\string_ts_entity\Entity\stringTechnicalSession;
+
+function string_mobile_api_entity_update(Drupal\Core\Entity\EntityInterface $entity) {
+  // dpm($entity);
+  if ($entity->getEntityTypeId() == 'entity_view_display') {
+    $entity_types = array_keys(_string_mobile_api_entity_types());
+    $entity_type = $entity->getTargetEntityTypeId();
+    if (in_array($entity_type, $entity_types)) {
+      $config = \Drupal::service('config.factory')->getEditable('string_mobile_api.settings');
+      $view_mode = !empty($config->get('view_modes.' . $entity_type . '.view_modes')) ? $config->get('view_modes.' . $entity_type . '.view_modes') : 'full';
+
+      if ($entity->id() == $entity_type . '.' . $entity->getTargetBundle() . '.' . $view_mode) {
+        $config->set('view_modes.' . $entity_type . '.changed', time())->save();
+      }
+    }
+  }
+}
+
+function _string_mobile_api_entity_types() {
+  return [
+    'node' => 'Content',
+    'string_exhibitor_entity' => 'Exhibitor',
+    'string_technical_session' => 'Technical Session',
+    'string_technical_session_paper' => 'Technical Session Paper'
+  ];
+}
+
+function _string_mobile_api_entity_restriction_params($entity_type) {
+  $params = [];
+
+  switch ($entity_type) {
+    case 'string_technical_session':
+      $ids = \Drupal::entityQuery('string_technical_session')->condition('removed', 0)->execute();
+      if($ids) {
+        $sessions = stringTechnicalSession::loadMultiple($ids);
+        $typeOptions = [];
+        $eventTypeOptions = [];
+        foreach($sessions as $session) {
+          if (isset($session->type)) {
+            if ($session->type->isEmpty()) {
+              $typeOptions[''] = t('Not set');
+            } else {
+              $fieldValues = $session->type->getValue();
+              foreach ($fieldValues as $val) {
+                $typeOptions[$val["value"]] = strtoupper($val["value"]);
+              }
+            }
+          }
+          if (isset($session->event_type)) {
+            if ($session->event_type->isEmpty()) {
+              $eventTypeOptions[''] = t('Not set');
+            } else {
+              $fieldValues = $session->event_type->getValue();
+              foreach ($fieldValues as $val) {
+                $eventTypeOptions[$val["value"]] = trim($val["value"], " \t.,");
+              }
+            }
+          }
+        }
+        if ($typeOptions) {
+          $params['type'] = [
+            'label' => t('Session types'),
+            'options' => $typeOptions,
+          ];
+        }
+        if ($eventTypeOptions) {
+          $params['event_type'] = [
+            'label' => t('Event types'),
+            'options' => $eventTypeOptions,
+          ];
+        }
+      }
+      break;
+    default:
+      break;
+  }
+
+  return $params;
+}

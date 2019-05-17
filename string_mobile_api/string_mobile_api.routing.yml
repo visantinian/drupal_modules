@@ -1,0 +1,103 @@
+# string_mobile_api.editor:
+entity.string_mobile_api_item.collection:
+  path: '/admin/configs/string/mobile/editor'
+  options:
+    _admin_route: TRUE
+  defaults:
+    _form: '\Drupal\string_mobile_api\Form\stringMobileApiEditor'
+    _title: 'UI Editor'
+  requirements:
+    _permission: 'administer string mobile api'
+
+# STRINGMobileApiItem routing definition:
+entity.string_mobile_api_item.collection_legacy:
+  path: '/admin/config/system/string_mobile_api_item'
+  options:
+    _admin_route: TRUE
+  defaults:
+    _entity_list: 'string_mobile_api_item'
+    _title: 'STRINGMobileApiItem Configuration'
+  requirements:
+    _permission: 'administer string mobile api'
+
+entity.string_mobile_api_item.add_form:
+  path: '/admin/configs/string/mobile/editor/add'
+  options:
+    _admin_route: TRUE
+  defaults:
+    _entity_form: 'string_mobile_api_item.add'
+    _title: 'Add UI-Item'
+  requirements:
+    _permission: 'administer string mobile api'
+
+entity.string_mobile_api_item.edit_form:
+  path: '/admin/configs/string/mobile/editor/{string_mobile_api_item}'
+  options:
+    _admin_route: TRUE
+  defaults:
+    _entity_form: 'string_mobile_api_item.edit'
+    _title: 'Edit UI-Item'
+  requirements:
+    _permission: 'administer string mobile api'
+
+entity.string_mobile_api_item.delete_form:
+  path: '/admin/configs/string/mobile/editor/{string_mobile_api_item}/delete'
+  options:
+    _admin_route: TRUE
+  defaults:
+    _entity_form: 'string_mobile_api_item.delete'
+    _title: 'Delete UI-Item'
+  requirements:
+    _permission: 'administer string mobile api'
+
+# string_mobile_api.variables routing definition:
+string_mobile_api.variables.collection:
+  path: '/admin/configs/string/mobile/variables'
+  defaults:
+    _controller: '\Drupal\string_mobile_api\Controller\stringMobileApiItemVariablesList::build'
+    _title: 'Variables'
+  requirements:
+    _permission: 'administer string mobile api'
+
+string_mobile_api.variables.add:
+  path: '/admin/configs/string/mobile/variables/add'
+  defaults:
+    _form: '\Drupal\string_mobile_api\Form\stringMobileApiVariableAdd'
+    _title: 'Add Variable'
+  requirements:
+    _permission: 'administer string mobile api'
+
+string_mobile_api.variables.edit:
+  path: '/admin/configs/string/mobile/variables/{variable_name}'
+  defaults:
+    _form: '\Drupal\string_mobile_api\Form\stringMobileApiVariableAdd'
+    _title: 'Edit Variable'
+  requirements:
+    _permission: 'administer string mobile api'
+
+string_mobile_api.variables.delete:
+  path: '/admin/configs/string/mobile/variables/{variable_name}/delete'
+  defaults:
+    _form: '\Drupal\string_mobile_api\Form\stringMobileApiVariableDelete'
+    _title: 'Delete Variable'
+  requirements:
+    _permission: 'administer string mobile api'
+
+# string_mobile_api settings:
+string_mobile_api.settings:
+  path: '/admin/configs/string/mobile/editor/settings'
+  defaults:
+    _form: '\Drupal\string_mobile_api\Form\stringMobileApiSettings'
+    _title: 'Mobile API Settings'
+  requirements:
+    _permission: 'administer string mobile api'
+
+# string_mobile_api filters:
+string_mobile_api.filters:
+  path: '/admin/configs/string/mobile/editor/filters'
+  defaults:
+    _form: '\Drupal\string_mobile_api\Form\stringMobileApiFilters'
+    _title: 'Filter configuration'
+  requirements:
+    _permission: 'administer string mobile api'
+

@@ -1,0 +1,28 @@
+string_mobile_api.main:
+  title: 'string Mobile API'
+  parent: system.admin_config_system
+  route_name: entity.string_mobile_api_item.collection
+
+string_mobile_api.ui:
+  title: 'UI Editor'
+  parent: string_mobile_api.main
+  route_name: entity.string_mobile_api_item.collection
+  weight: 0
+
+string_mobile_api.variables:
+  title: 'Variables'
+  parent: string_mobile_api.main
+  route_name: string_mobile_api.variables.collection
+  weight: 10
+
+string_mobile_api.settings:
+  title: 'Settings'
+  parent: string_mobile_api.main
+  route_name: string_mobile_api.settings
+  weight: 20
+
+string_mobile_api.filters:
+  title: 'Filters'
+  parent: string_mobile_api.main
+  route_name: string_mobile_api.filters
+  weight: 30

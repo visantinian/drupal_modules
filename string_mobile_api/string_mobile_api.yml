@@ -1,0 +1,3 @@
+administer string mobile api:
+  title: 'Administer string Mobile API'
+  restrict access: TRUE
